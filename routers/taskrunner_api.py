@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Request, Response, status
-from fastapi.responses import JSONResponse
+from fastapi import APIRouter, Request
 import logging
+from controllers.taskrunner import task
 
 
 logger = logging.getLogger(__name__)
@@ -16,6 +16,7 @@ async def index():
     return {"message": "Task Runner API"}
 
 
-
-
+@router.post("/task")
+async def task(request: Request):
+    return task(request=request)
 
