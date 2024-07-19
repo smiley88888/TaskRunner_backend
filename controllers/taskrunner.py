@@ -13,11 +13,11 @@ async def taskrunner(request: Request):
         logger.info("incoming_data %s", incoming_data)
 
         task_type = incoming_data["task_type"]
-        code = incoming_data["code"]
-        cpu = incoming_data["resources"]["cpu"]
-        gpu = incoming_data["resources"]["gpu"]
-        ram = incoming_data["resources"]["ram"]
-        store = incoming_data["resourcs"]["storage"]
+        code = str(incoming_data["code"])
+        cpu = int(incoming_data["resources"]["cpu"])
+        gpu = int(incoming_data["resources"]["gpu"])
+        ram = float(incoming_data["resources"]["ram"])
+        store = float(incoming_data["resourcs"]["storage"])
 
     except Exception as e:
         logger.error(str(e))
