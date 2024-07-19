@@ -1,0 +1,8 @@
+myenv
+__pycache__
+test
+
+
+.env
+git_repos.sh
+generate_requirements.py
