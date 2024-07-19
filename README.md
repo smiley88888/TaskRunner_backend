@@ -1,9 +1,12 @@
-The TaskExecAPI project aims to develop a Python-based API using FastAPI to manage and execute tasks dynamically. 
+# TaskRunner
+
+**Summary:**
+The TaskRunner project aims to develop a Python-based API using FastAPI to manage and execute tasks dynamically. 
 These tasks include executable code snippets provided by clients, which are securely executed within Docker containers. 
 The system is designed to dynamically allocate resources such as CPU, GPU, RAM, and storage based on the specific needs of each task.
 
-# 1. Endpoints
-## Execute Task
+## Endpoints
+### Execute Task
 **Endpoint:** /api/taskrunner/task
 
 **Method:** POST
