@@ -25,7 +25,7 @@ def create_container(code: str, cpu: int, memory: float, storage: float, gpu: in
     #     volumes={'/tmp': {'bind': '/mnt', 'mode': 'rw'}}
     # )
     container = client.containers.run(
-        "amd64/python:3",
+        "python:3.9",
         command=f"python -c '{code}'",
     )
     return container
