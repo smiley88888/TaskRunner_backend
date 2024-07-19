@@ -4,6 +4,7 @@ from docker.types import Resources
 
 client = docker.from_env()
 
+
 def create_container(code: str, cpu: int, memory: float, storage: float, gpu: int):
     # resource_constraints = {
     #     'cpu_limit': cpu,
@@ -26,13 +27,16 @@ def create_container(code: str, cpu: int, memory: float, storage: float, gpu: in
     # )
     container = client.containers.run(
         "python:3.9",
-        command=f"python -c '{code}'",
+        command=f"python -c \"{code}\"",
+        detach=True
     )
     return container
 
-if __name__=="__main__":
-    code = "print(\"Hello world!\")";
+
+if __name__ == "__main__":
+    code = "print(\'Hello world!\')"
     container = create_container(code, 2, 2, 1, 0)
     container.wait()
     logs = container.logs().decode('utf-8')
+    print(logs)
     container.remove()

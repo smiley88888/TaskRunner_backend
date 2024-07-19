@@ -17,19 +17,18 @@ async def taskrunner(request: Request):
         cpu = int(incoming_data["resources"]["cpu"])
         gpu = int(incoming_data["resources"]["gpu"])
         ram = float(incoming_data["resources"]["ram"])
-        store = float(incoming_data["resourcs"]["storage"])
+        store = float(incoming_data["resources"]["storage"])
 
     except Exception as e:
         logger.error(str(e))
-        return JSONResponse(content={"message":"failed", "result":""}, status_code=status.HTTP_400_BAD_REQUEST)
-    
+        return JSONResponse(content={"message": "failed", "result": ""}, status_code=status.HTTP_400_BAD_REQUEST)
+
     try:
         container = create_container(code, cpu, ram, store, gpu)
         container.wait()
         logs = container.logs().decode('utf-8')
         container.remove()
-        return JSONResponse(content={"message":"success", "result":logs}, status_code=status.HTTP_200_OK)
+        return JSONResponse(content={"message": "success", "result": logs}, status_code=status.HTTP_200_OK)
     except Exception as e:
         logger.error(str(e))
-        return JSONResponse(content={"message":"failed", "result":""}, status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+        return JSONResponse(content={"message": "failed", "result": ""}, status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)

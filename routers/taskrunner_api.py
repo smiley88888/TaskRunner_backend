@@ -18,5 +18,5 @@ async def index():
 
 @router.post("/task")
 async def task(request: Request):
-    return taskrunner(request = request)
-
+    response = await taskrunner(request=request)
+    return response

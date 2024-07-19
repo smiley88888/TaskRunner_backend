@@ -5,4 +5,5 @@ test
 
 .env
 git_repos.sh
+git_repos.bat
 generate_requirements.py
